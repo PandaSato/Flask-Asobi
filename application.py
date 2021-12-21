@@ -5,11 +5,14 @@ application = Flask(__name__)
 
 @application.route('/')
 def hello():
-    return render_template('testPage.html',test=['Nice','Welcome to Flask!'])
+    _text = 'Welcome to Flask!\n Do you know 21*37?\n if you know the answer, please input that in URL!'
+    return render_template('testPage.html',subject = 'Hello World', text = _text.split('\n'))
 
-@application.route("/<user>")
-def helloWorld(user):
-    return "Hello goorm! "+user
+@application.route("/<answer>")
+def helloWorld(answer):
+    if answer == '777':
+        return render_template('testPage.html',subject='Welcome to 777 World!',text=['Now you started your journey!'])
+    return 'There is nothing but you. Please go to the first!'
 
 
 if __name__ == "__main__":
